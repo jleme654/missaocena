@@ -30,7 +30,7 @@ public class FListaClientes extends javax.swing.JFrame {
         tabela = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Montadora Digasim v.01");
+        setTitle("Missao Cena - Cadastro Assistidos");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -62,7 +62,7 @@ public class FListaClientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Telefone", "Email"
+                "Nome", "Data_Visita", "Rg"
             }
         ));
         tabela.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -87,7 +87,7 @@ public class FListaClientes extends javax.swing.JFrame {
             ClassConecta conexao = new ClassConecta();
             conexao.conecta();
             stmt = conexao.con.createStatement();
-            ResultSet rs = stmt.executeQuery("Select * from clientes order by nome desc");
+            ResultSet rs = stmt.executeQuery("Select * from assistidos order by nome desc");
             // ==> retorna o n�mero de colunas de uma tabela "rs.getMetaData().getColumnCount();"
             while (rs.next()) {
                 //Adicionando os Dados da tabela na jTable              

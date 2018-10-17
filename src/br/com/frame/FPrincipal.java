@@ -46,11 +46,11 @@ public class FPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblHoje1.setFont(new java.awt.Font("MS Sans Serif", 1, 24)); // NOI18N
-        lblHoje1.setText("Montadora DSAP");
+        lblHoje1.setText("Missao Cena");
 
         jMenu1.setText("Listar");
 
-        jMenuItem1.setText("Fornecedores");
+        jMenuItem1.setText("Assistidos");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -58,15 +58,15 @@ public class FPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Clientes");
+        /*jMenuItem2.setText("Clientes");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(jMenuItem2);*/
 
-        jMenuItem8.setText("Eletrica");
+     /*   jMenuItem8.setText("Eletrica");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -88,7 +88,7 @@ public class FPrincipal extends javax.swing.JFrame {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem6);
+        jMenu1.add(jMenuItem6);*/
 
         jMenuBar1.add(jMenu1);
 

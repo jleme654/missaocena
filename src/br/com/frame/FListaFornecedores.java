@@ -9,6 +9,10 @@ import javax.swing.table.DefaultTableModel;
 public class FListaFornecedores extends javax.swing.JFrame {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Creates new form FListaSetor
      */
     public FListaFornecedores() {
@@ -31,7 +35,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
         tabela = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Montadora Digasim v.01");
+        setTitle("Missao Cena - Cadastro Assistidos");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -46,7 +50,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(null);
 
-        btnExcluiServidor.setText("Excluir Fornecedor");
+        btnExcluiServidor.setText("Excluir Assistido");
         btnExcluiServidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluiServidorActionPerformed(evt);
@@ -72,7 +76,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Funcao", "Telefone"
+                "ID", "Nome", "Data_Visita"
             }
         ));
         tabela.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -114,7 +118,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
             //CSetor.setNome(nome);
             //CSetor.deletaSetor();
             ((DefaultTableModel) tabela.getModel()).removeRow(linha);//para remover a linha exclu�da
-            JOptionPane.showMessageDialog(null, "Setor Exclu�do com Sucesso", "ATENCAO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Setor Excluido com Sucesso", "ATENCAO", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnExcluiServidorActionPerformed
 
@@ -126,12 +130,16 @@ public class FListaFornecedores extends javax.swing.JFrame {
             ClassConecta conexao = new ClassConecta();
             conexao.conecta();
             stmt = conexao.con.createStatement();
-            ResultSet rs = stmt.executeQuery("Select * from fornecedores order by nome desc");
+            ResultSet rs = stmt.executeQuery("Select * from assistido order by nome desc");
             // ==> retorna o n�mero de colunas de uma tabela "rs.getMetaData().getColumnCount();"
             while (rs.next()) {
                 //Adicionando os Dados da tabela na jTable              
                 ((DefaultTableModel) tabela.getModel()).addRow(
-                        new Object[]{rs.getString(2), rs.getString(7),rs.getString(6)});
+                        new Object[]{
+                        		rs.getString(1),
+                        		rs.getString(2), // nome 
+                        		rs.getString(3) // data visita
+                        		});
             }
             rs.close();
             stmt.close();
@@ -143,17 +151,18 @@ public class FListaFornecedores extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         //Personalizando a largura das Colunas
-        tabela.getColumnModel().getColumn(0).setPreferredWidth(159); //Tamanho Inicial
-        tabela.getColumnModel().getColumn(0).setMaxWidth(159);//Tamanho Maximo
-        tabela.getColumnModel().getColumn(0).setMinWidth(159);//Tamanho M�nimo
+    	int first = 40, second = 210	, third = 180;
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(first); //Tamanho Inicial
+        tabela.getColumnModel().getColumn(0).setMaxWidth(first);//Tamanho Maximo
+        tabela.getColumnModel().getColumn(0).setMinWidth(first);//Tamanho M�nimo
         
-        tabela.getColumnModel().getColumn(1).setPreferredWidth(140);
-        tabela.getColumnModel().getColumn(1).setMaxWidth(140);
-        tabela.getColumnModel().getColumn(1).setMinWidth(140);
+        tabela.getColumnModel().getColumn(1).setPreferredWidth(second);
+        tabela.getColumnModel().getColumn(1).setMaxWidth(second);
+        tabela.getColumnModel().getColumn(1).setMinWidth(second);
         
-        tabela.getColumnModel().getColumn(2).setPreferredWidth(140);
-        tabela.getColumnModel().getColumn(2).setMaxWidth(140);
-        tabela.getColumnModel().getColumn(2).setMinWidth(140);
+        tabela.getColumnModel().getColumn(2).setPreferredWidth(third);
+        tabela.getColumnModel().getColumn(2).setMaxWidth(third);
+        tabela.getColumnModel().getColumn(2).setMinWidth(third);
         
 //        tabela.getColumnModel().getColumn(3).setPreferredWidth(160);
 //        tabela.getColumnModel().getColumn(3).setMaxWidth(160);
