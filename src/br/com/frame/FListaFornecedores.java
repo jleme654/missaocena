@@ -97,15 +97,15 @@ public class FListaFornecedores extends javax.swing.JFrame {
 // TODO add your handling code here:
         //V�riaveis para pegar o valor da linha selecionada
         int linha = tabela.getSelectedRow();
-        int coluna = tabela.getSelectedColumn();
+      //  int coluna = tabela.getSelectedColumn();
         if (linha == -1) {
             JOptionPane.showMessageDialog(null, "Selecione uma linha", "ATENCAO", JOptionPane.WARNING_MESSAGE);
         } else {
             //Vari�veis para pegar os valores das colunas da jTable
-            String nome = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 0).toString();
-            String data = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 1).toString();
-            String data2 = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 2).toString();
-            String data3 = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 3).toString();
+//            String nome = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 0).toString();
+//            String data = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 1).toString();
+//            String data2 = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 2).toString();
+//            String data3 = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 3).toString();
 
 
             // int ConvertCodigo = Integer.parseInt(codigo);
@@ -124,7 +124,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         Statement stmt = null;
-        Connection con = null;
+        //Connection con = null;
         try {
             //ClassDiaria CDiaria = new ClassDiaria();
             ClassConecta conexao = new ClassConecta();

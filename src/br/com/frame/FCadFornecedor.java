@@ -11,6 +11,10 @@ import javax.swing.JOptionPane;
 public class FCadFornecedor extends javax.swing.JFrame {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8207656819434578098L;
+	/**
      * Creates new form FCadUser
      */
     public FCadFornecedor() {
