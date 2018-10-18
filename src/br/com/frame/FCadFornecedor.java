@@ -1,7 +1,6 @@
 package br.com.frame;
 
-import br.com.model.Fornecedores;
-import javax.swing.JOptionPane;
+import br.com.model.AssistidoVO;
 
 /**
  *
@@ -47,7 +46,7 @@ public class FCadFornecedor extends javax.swing.JFrame {
         popupMenu1.setLabel("popupMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Montadora Digasim v.01");
+        setTitle("Missao Cena");
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -55,7 +54,7 @@ public class FCadFornecedor extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("MS Sans Serif", 1, 12)); // NOI18N
-        jLabel1.setText("Cadastro de Fornecedores");
+        jLabel1.setText("Cadastro de Assistido");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(110, 10, 160, 16);
 
@@ -65,23 +64,24 @@ public class FCadFornecedor extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(null);
 
+        int alturaCaixa = 26;
         jLabel2.setText("Nome: ");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(10, 10, 110, 14);
+        jLabel2.setBounds(10, 14, 110, 14);
         jPanel2.add(txtUser);
-        txtUser.setBounds(110, 10, 150, 20);
+        txtUser.setBounds(110, 14, 150, alturaCaixa);
 
-        jLabel4.setText("Funcao:");
+        jLabel4.setText("RG:");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(10, 40, 100, 14);
         jPanel2.add(txtUser1);
-        txtUser1.setBounds(110, 40, 150, 20);
+        txtUser1.setBounds(110, 40, 150, alturaCaixa);
 
-        jLabel6.setText("Telefone:");
+        jLabel6.setText("CPF:");
         jPanel2.add(jLabel6);
         jLabel6.setBounds(10, 70, 100, 14);
         jPanel2.add(txtUser3);
-        txtUser3.setBounds(110, 70, 150, 20);
+        txtUser3.setBounds(110, 70, 150, alturaCaixa);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(10, 60, 370, 150);
@@ -119,14 +119,14 @@ public class FCadFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if (txtUser.getText().length() == 0 || txtUser1.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Preencha os campos", "ATENCAO", JOptionPane.WARNING_MESSAGE);
-        } else {
-            Fornecedores pro = new Fornecedores();
+//        if (txtUser.getText().length() == 0 || txtUser1.getText().length() == 0) {
+//            JOptionPane.showMessageDialog(null, "Preencha os campos", "ATENCAO", JOptionPane.WARNING_MESSAGE);
+//        } else {
+            AssistidoVO pro = new AssistidoVO();
             pro.setNome(txtUser.getText());
-            pro.setFuncao(txtUser1.getText());
-            pro.setTelefone(txtUser3.getText());
-            pro.incluiFornecedor();
+            pro.setRg(txtUser1.getText());
+            pro.setCpf(txtUser3.getText());
+//            pro.incluiFornecedor();
 
             this.dispose();
 //            System.out.println("###"+   pro);
@@ -136,7 +136,7 @@ public class FCadFornecedor extends javax.swing.JFrame {
 //            estoque.incluiEstoque();
 
         }
-    }//GEN-LAST:event_btnSalvarActionPerformed
+   // }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
