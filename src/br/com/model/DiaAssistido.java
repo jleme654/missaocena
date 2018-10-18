@@ -1,5 +1,6 @@
 package br.com.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -11,6 +12,7 @@ public class DiaAssistido {
 
 	private int idAssistido;
 	private Timestamp diaVisita;
+	private Date dataVisita;
 
 	public int getIdAssistido() {
 		return idAssistido;
@@ -28,4 +30,12 @@ public class DiaAssistido {
 		this.diaVisita = diaVisita;
 	}
 
+	public Date getDataVisita() {
+		return dataVisita;
+	}
+
+	public void setDataVisita(Date dataVisita) {
+		this.dataVisita = dataVisita;
+	}
+	
 }

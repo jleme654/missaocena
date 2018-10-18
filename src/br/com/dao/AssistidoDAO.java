@@ -36,8 +36,9 @@ public class AssistidoDAO {
 			conexao.conecta();
 			Statement stmt = conexao.con.createStatement();
 			//INSERT INTO `dia_assistido`(`idAssistido`, `diaVisita`) VALUES ([value-1],[value-2])
-			String dataVisita = MissaoCenaUtil.convertTimestampToString(vo.getDataVisita());
-			stmt.executeUpdate("insert into dia_assistido (`idAssistido`, `diaVisita`) values (" + vo.getId() + ", '" + vo.getDataVisita() + "')");
+			//String dataVisita = MissaoCenaUtil.convertTimestampToString(vo.getDataVisita());
+			stmt.executeUpdate("insert into dia_assistido (`idAssistido`, `diaVisita`, `dataVisita`) "
+					+ "values (" + vo.getId() + ", '" + vo.getDataVisita() + "', '" + MissaoCenaUtil.getDataHojeString() +"')");
 			System.out.println("Assistido " + vo.getNome() + " incluido");
 			stmt.close();
 			conexao.con.close();

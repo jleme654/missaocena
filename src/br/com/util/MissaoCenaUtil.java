@@ -2,7 +2,6 @@ package br.com.util;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Currency;
 
 /**
 *
@@ -27,10 +26,17 @@ public class MissaoCenaUtil {
         String dateConvert = dataVisita.toString();		
 		return dateConvert;
 	}
+
+	public static String getDataHojeString() {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date = new java.util.Date();
+		String today = df.format(date);
+		return today;
+	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Timestamp dataDeHoje = new Timestamp(System.currentTimeMillis());
 		System.out.println(convertTimestampToString(dataDeHoje));
 	}
-
+*/
 }
