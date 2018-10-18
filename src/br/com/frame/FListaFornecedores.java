@@ -1,10 +1,16 @@
 package br.com.frame;
 
-import br.com.dao.ClassConecta;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.*;
+import java.sql.Statement;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import br.com.dao.AssistidoDAO;
+import br.com.dao.ClassConecta;
+import br.com.model.AssistidoVO;
+import br.com.util.MissaoCenaUtil;
 
 public class FListaFornecedores extends javax.swing.JFrame {
 
@@ -50,7 +56,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(null);
 
-        btnExcluiServidor.setText("Excluir Assistido");
+        btnExcluiServidor.setText("Excluir");
         btnExcluiServidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluiServidorActionPerformed(evt);
@@ -59,7 +65,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
         jPanel1.add(btnExcluiServidor);
         btnExcluiServidor.setBounds(10, 10, 150, 23);
 
-        btnSair.setText("Sair");
+        btnSair.setText("Incluir");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
@@ -88,38 +94,59 @@ public class FListaFornecedores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * botao adicionar assistido no dia
+     * @param evt
+     */
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-// TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
+    	int linha = tabela.getSelectedRow();
+    	String id = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 0).toString();
+        String nome = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 1).toString();
+        String dataVisita = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 2).toString();
 
+        AssistidoVO vo = new AssistidoVO();
+        vo.setNome(nome);
+        vo.setDataVisita(MissaoCenaUtil.convertStrToTimestamp(dataVisita));
+        vo.setCpf(null);
+        vo.setId(Integer.parseInt(id));
+        vo.setRg(null);
+          
+        AssistidoDAO.incluirAssistido(vo);
+   
+        JOptionPane.showMessageDialog(null, "Adicionado " + vo.getNome() + " com Sucesso", "ATENCAO", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    /**
+     * botao excluir para assistido 
+     * @param dataStr
+     * @return
+     */
     private void btnExcluiServidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluiServidorActionPerformed
-// TODO add your handling code here:
-        //V�riaveis para pegar o valor da linha selecionada
         int linha = tabela.getSelectedRow();
-      //  int coluna = tabela.getSelectedColumn();
-        if (linha == -1) {
-            JOptionPane.showMessageDialog(null, "Selecione uma linha", "ATENCAO", JOptionPane.WARNING_MESSAGE);
-        } else {
-            //Vari�veis para pegar os valores das colunas da jTable
-//            String nome = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 0).toString();
-//            String data = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 1).toString();
-//            String data2 = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 2).toString();
-//            String data3 = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 3).toString();
+//        JOptionPane.showMessageDialog(null, tabela.getSelectedRow(), "ATENCAO", JOptionPane.WARNING_MESSAGE);
+//             
+//      //  int coluna = tabela.getSelectedColumn();
+//        if (linha == -1) {
+//            JOptionPane.showMessageDialog(null, "Selecione uma linha", "ATENCAO", JOptionPane.WARNING_MESSAGE);
+//        } else {
 
+    	//Vari�veis para pegar os valores das colunas da jTable
+            String id = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 0).toString();
+            String nome = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 1).toString();
+            String dataVisita = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 2).toString();
 
-            // int ConvertCodigo = Integer.parseInt(codigo);
-
-            //  ClassUsuario usuario = new ClassUsuario();
-            //  usuario.setUsuario(nome);
-
-            //ClassCadSetor CSetor = new ClassCadSetor();
-            //CSetor.setCodigo(ConvertCodigo);
-            //CSetor.setNome(nome);
-            //CSetor.deletaSetor();
+            AssistidoVO vo = new AssistidoVO();
+            vo.setNome(nome);
+            vo.setDataVisita(MissaoCenaUtil.convertStrToTimestamp(dataVisita));
+            vo.setCpf(null);
+            vo.setId(Integer.parseInt(id));
+            vo.setRg(null);
+            
+            AssistidoDAO.excluiAssistido(vo);
+       
             ((DefaultTableModel) tabela.getModel()).removeRow(linha);//para remover a linha exclu�da
-            JOptionPane.showMessageDialog(null, "Setor Excluido com Sucesso", "ATENCAO", JOptionPane.INFORMATION_MESSAGE);
-        }
+            JOptionPane.showMessageDialog(null, "Assistido Excluido com Sucesso", "ATENCAO", JOptionPane.INFORMATION_MESSAGE);
+//        }
     }//GEN-LAST:event_btnExcluiServidorActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

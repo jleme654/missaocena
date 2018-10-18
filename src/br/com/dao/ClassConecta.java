@@ -3,6 +3,11 @@ package br.com.dao;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
+/**
+*
+* @since 18/10/2018
+* @author jleme
+*/
 public class ClassConecta {
 
     /**
