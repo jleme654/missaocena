@@ -6,6 +6,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 import br.com.model.AssistidoVO;
+import br.com.util.MissaoCenaUtil;
 
 /**
  *
@@ -35,8 +36,9 @@ public class AssistidoDAO {
 			conexao.conecta();
 			Statement stmt = conexao.con.createStatement();
 			//INSERT INTO `dia_assistido`(`idAssistido`, `diaVisita`) VALUES ([value-1],[value-2])
-			stmt.executeUpdate("insert into dia_assistido (`idAssistido`, `diaVisita`) values (" + vo.getId() + ", " + vo.getDataVisita() + ")");
-			System.out.println("Assistido " + vo.getNome() + " excluido");
+			String dataVisita = MissaoCenaUtil.convertTimestampToString(vo.getDataVisita());
+			stmt.executeUpdate("insert into dia_assistido (`idAssistido`, `diaVisita`) values (" + vo.getId() + ", '" + vo.getDataVisita() + "')");
+			System.out.println("Assistido " + vo.getNome() + " incluido");
 			stmt.close();
 			conexao.con.close();
 			System.out.println("Fechada");
