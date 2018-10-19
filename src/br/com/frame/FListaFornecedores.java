@@ -35,7 +35,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnExcluiServidor = new javax.swing.JButton();
+        //btnExcluiServidor = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -56,14 +56,14 @@ public class FListaFornecedores extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(null);
 
-        btnExcluiServidor.setText("Excluir");
+       /* btnExcluiServidor.setText("Excluir");
         btnExcluiServidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluiServidorActionPerformed(evt);
             }
         });
         jPanel1.add(btnExcluiServidor);
-        btnExcluiServidor.setBounds(10, 10, 150, 23);
+        btnExcluiServidor.setBounds(10, 10, 150, 23);*/
 
         btnSair.setText("Incluir");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
      * @param dataStr
      * @return
      */
-    private void btnExcluiServidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluiServidorActionPerformed
+/*    private void btnExcluiServidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluiServidorActionPerformed
         int linha = tabela.getSelectedRow();
 //        JOptionPane.showMessageDialog(null, tabela.getSelectedRow(), "ATENCAO", JOptionPane.WARNING_MESSAGE);
 //             
@@ -148,7 +148,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Assistido Excluido com Sucesso", "ATENCAO", JOptionPane.INFORMATION_MESSAGE);
 //        }
     }//GEN-LAST:event_btnExcluiServidorActionPerformed
-
+*/
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         Statement stmt = null;
         //Connection con = null;
@@ -212,7 +212,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExcluiServidor;
+    //private javax.swing.JButton btnExcluiServidor;
     private javax.swing.JButton btnSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
