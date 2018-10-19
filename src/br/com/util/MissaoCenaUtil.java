@@ -33,6 +33,11 @@ public class MissaoCenaUtil {
 		String today = df.format(date);
 		return today;
 	}
+
+	public static Timestamp getDataHojeTimestamp() {
+		Timestamp hoje = new Timestamp(System.currentTimeMillis());
+		return hoje;
+	}
 	
 	/*public static void main(String[] args) {
 		Timestamp dataDeHoje = new Timestamp(System.currentTimeMillis());

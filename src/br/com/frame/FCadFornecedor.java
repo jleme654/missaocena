@@ -1,6 +1,10 @@
 package br.com.frame;
 
+import javax.swing.JOptionPane;
+
+import br.com.dao.AssistidoDAO;
 import br.com.model.AssistidoVO;
+import br.com.util.MissaoCenaUtil;
 
 /**
  *
@@ -119,25 +123,21 @@ public class FCadFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-//        if (txtUser.getText().length() == 0 || txtUser1.getText().length() == 0) {
-//            JOptionPane.showMessageDialog(null, "Preencha os campos", "ATENCAO", JOptionPane.WARNING_MESSAGE);
-//        } else {
-            AssistidoVO pro = new AssistidoVO();
-            pro.setNome(txtUser.getText());
-            pro.setRg(txtUser1.getText());
-            pro.setCpf(txtUser3.getText());
-//            pro.incluiFornecedor();
+    	AssistidoVO pro = new AssistidoVO();
+        pro.setNome(txtUser.getText());
+        pro.setRg(txtUser1.getText());
+        pro.setCpf(txtUser3.getText());
+        pro.setDataVisita(MissaoCenaUtil.getDataHojeTimestamp());
+        
+        boolean cadastrou = true;
+        cadastrou = AssistidoDAO.cadastrarAssistido(pro);
+        
+        if(cadastrou)
+        	AssistidoDAO.incluirAssistido(pro);
 
-            this.dispose();
-//            System.out.println("###"+   pro);
-//            EstoqueVO estoque = new EstoqueVO();
-//            estoque.setNomeProduto(pro.getNome());
-//            estoque.setQtde(Integer.parseInt(txtUser2.getText().toString()));
-//            estoque.incluiEstoque();
-
-        }
-   // }//GEN-LAST:event_btnSalvarActionPerformed
-
+        JOptionPane.showMessageDialog(null, "Cadastrado " + pro.getNome() + " com Sucesso", "ATENCAO", JOptionPane.INFORMATION_MESSAGE);
+    }
+   
     /**
      * @param args the command line arguments
      */

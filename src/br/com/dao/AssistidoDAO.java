@@ -1,5 +1,6 @@
 package br.com.dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -35,8 +36,6 @@ public class AssistidoDAO {
 		try {
 			conexao.conecta();
 			Statement stmt = conexao.con.createStatement();
-			//INSERT INTO `dia_assistido`(`idAssistido`, `diaVisita`) VALUES ([value-1],[value-2])
-			//String dataVisita = MissaoCenaUtil.convertTimestampToString(vo.getDataVisita());
 			stmt.executeUpdate("insert into dia_assistido (`idAssistido`, `diaVisita`, `dataVisita`) "
 					+ "values (" + vo.getId() + ", '" + vo.getDataVisita() + "', '" + MissaoCenaUtil.getDataHojeString() +"')");
 			System.out.println("Assistido " + vo.getNome() + " incluido");
@@ -46,6 +45,43 @@ public class AssistidoDAO {
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro no sistema:\n" + e, "ATENCAO",	JOptionPane.WARNING_MESSAGE);
 		}
+	}
+	
+	public static boolean cadastrarAssistido(AssistidoVO vo) {
+		try {
+			conexao.conecta();
+			Statement stmt = conexao.con.createStatement();
+			int id = getCountAssistidos();
+			vo.setId(id );
+			stmt.executeUpdate("insert into assistido (`id`, `nome`, `dataVisita`, `rg`, `cpf`) values (" + vo.getId() + ", '" + vo.getNome() + "', '" + MissaoCenaUtil.getDataHojeString() +"', '" + vo.getRg() + "', '" + vo.getCpf() + "')");
+			System.out.println("Assistido " + vo.getNome() + " cadastrado");
+			stmt.close();
+			conexao.con.close();
+			System.out.println("Conexao Fechada");
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Ocorreu um erro no sistema:\n" + e, "ATENCAO",	JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+		return true;
+	}
+	
+	public static int getCountAssistidos() {
+		int count = 0;
+		try {
+			conexao.conecta();
+			Statement stmt = conexao.con.createStatement();
+	        ResultSet rs = stmt.executeQuery("Select * from assistido");
+	        while (rs.next()) {
+	        	count++;
+	        }
+			stmt.close();
+			conexao.con.close();
+			System.out.println("Conexao Fechada");
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Ocorreu um erro no sistema:\n" + e, "ATENCAO",	JOptionPane.WARNING_MESSAGE);
+		}
+		count++;
+		return count;
 	}
 
 }
