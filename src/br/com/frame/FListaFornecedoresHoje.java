@@ -4,12 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import br.com.dao.AssistidoDAO;
 import br.com.dao.ClassConecta;
-import br.com.model.AssistidoVO;
 import br.com.util.MissaoCenaUtil;
 
 public class FListaFornecedoresHoje extends javax.swing.JFrame {
@@ -36,7 +33,7 @@ public class FListaFornecedoresHoje extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
        // btnExcluiServidor = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
+       // btnSair = new javax.swing.JButton(); // **** BOTAO UTILIZADO PARA INCLUIR
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
 
@@ -65,14 +62,14 @@ public class FListaFornecedoresHoje extends javax.swing.JFrame {
         jPanel1.add(btnExcluiServidor);
         btnExcluiServidor.setBounds(10, 10, 150, 23);*/
 
-        btnSair.setText("Incluir");
+      /*  btnSair.setText("Incluir");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
             }
         });
         jPanel1.add(btnSair);
-        btnSair.setBounds(160, 10, 160, 23);
+        btnSair.setBounds(160, 10, 160, 23);*/
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(70, 200, 330, 50);
@@ -82,7 +79,7 @@ public class FListaFornecedoresHoje extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Data_Visita"
+                "ID", "Nome", "Data_Cadastro_Ordem"
             }
         ));
         tabela.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -98,7 +95,7 @@ public class FListaFornecedoresHoje extends javax.swing.JFrame {
      * botao adicionar assistido no dia
      * @param evt
      */
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+   /* private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
     	int linha = tabela.getSelectedRow();
     	String id = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 0).toString();
         String nome = ((DefaultTableModel) tabela.getModel()).getValueAt(linha, 1).toString();
@@ -114,7 +111,7 @@ public class FListaFornecedoresHoje extends javax.swing.JFrame {
         AssistidoDAO.incluirAssistido(vo);
    
         JOptionPane.showMessageDialog(null, "Adicionado " + vo.getNome() + " com Sucesso", "ATENCAO", JOptionPane.INFORMATION_MESSAGE);
-    }
+    }*/
     
     /**
      * botao excluir para assistido 
@@ -234,7 +231,7 @@ public class FListaFornecedoresHoje extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     //private javax.swing.JButton btnExcluiServidor;
-    private javax.swing.JButton btnSair;
+    //private javax.swing.JButton btnSair; //*** botao de INCLUIR
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabela;

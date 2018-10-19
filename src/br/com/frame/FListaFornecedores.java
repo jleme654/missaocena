@@ -82,7 +82,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Data_Visita"
+                "ID", "Nome", "Data_Cadastro"
             }
         ));
         tabela.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
