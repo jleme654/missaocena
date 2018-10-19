@@ -157,7 +157,7 @@ public class FListaFornecedores extends javax.swing.JFrame {
             ClassConecta conexao = new ClassConecta();
             conexao.conecta();
             stmt = conexao.con.createStatement();
-            ResultSet rs = stmt.executeQuery("Select * from assistido order by nome desc");
+            ResultSet rs = stmt.executeQuery("Select * from assistido order by nome asc");
             // ==> retorna o n�mero de colunas de uma tabela "rs.getMetaData().getColumnCount();"
             while (rs.next()) {
                 //Adicionando os Dados da tabela na jTable              
