@@ -18,6 +18,7 @@ public class FListaFornecedoresHoje extends javax.swing.JFrame {
 	/**
      * Creates new form FListaSetor
      */
+	
     public FListaFornecedoresHoje() {
         initComponents();
         setBounds(250, 250, 470, 290);
@@ -176,12 +177,15 @@ public class FListaFornecedoresHoje extends javax.swing.JFrame {
             	    + "and dia_assistido.dataVisita = '" + MissaoCenaUtil.getDataHojeString() + "'");
             		//+ "where `dataVisita` between '"+ ontem + "' and '" + amanha + "'");
             		//+ " order by `dataVisita` desc");
+           
             // ==> retorna o n�mero de colunas de uma tabela "rs.getMetaData().getColumnCount();"
+            int count = 0;
             while (rs.next()) {
+            	count++;
                 //Adicionando os Dados da tabela na jTable              
                 ((DefaultTableModel) tabela.getModel()).addRow(
                         new Object[]{
-                        		rs.getString(1),
+                        		String.valueOf(count), //rs.getString(1), // ordemDia
                         		rs.getString(2), // nome 
                         		rs.getString(3) // data visita
                         		});
