@@ -4,6 +4,10 @@
  */
 package br.com.frame;
 
+import javax.swing.JOptionPane;
+
+import br.com.relatorio.GeraRelatorio;
+
 /**
  *
  * @author jleme
@@ -34,7 +38,7 @@ public class FPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-//        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
 //        jMenuItem9 = new javax.swing.JMenuItem();
 //        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -70,7 +74,7 @@ public class FPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-     /*   jMenuItem8.setText("Eletrica");
+        jMenuItem8.setText("Relatorio Hoje");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -78,6 +82,7 @@ public class FPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem8);
 
+        /*
         jMenuItem9.setText("Garcon");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,11 +230,18 @@ public class FPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 */
     //lista de eletricistas
-/*    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        FListaEletrica f = new FListaEletrica();
-        f.show();
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        int resposta = JOptionPane.showConfirmDialog( null,"Deseja gerar relatorio ?", "Relatorio",JOptionPane.YES_NO_OPTION);
+    	System.out.println(resposta);
+    	if(resposta == 0) {
+    		GeraRelatorio.geraRelatorioPlanilhaExcel();
+    	    JOptionPane.showMessageDialog(null, "Relatorio gerado com Sucesso", "ATENCAO", JOptionPane.INFORMATION_MESSAGE);
+    	}else {
+    		 //System.exit(0);
+    	}
     }//GEN-LAST:event_jMenuItem8ActionPerformed
-    
+
+    /*    
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         FListaGarcon f = new FListaGarcon();
         f.show();
@@ -287,7 +299,7 @@ public class FPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
 //    private javax.swing.JMenuItem jMenuItem6;
 //    private javax.swing.JMenuItem jMenuItem7;
-//    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem8;
 //    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JLabel lblHoje1;
     // End of variables declaration//GEN-END:variables
