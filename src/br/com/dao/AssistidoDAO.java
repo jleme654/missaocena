@@ -52,7 +52,8 @@ public class AssistidoDAO {
 			conexao.conecta();
 			Statement stmt = conexao.con.createStatement();
 			int id = getCountAssistidos();
-			vo.setId(id );
+			id = id + 1;
+			vo.setId(id);
 			stmt.executeUpdate("insert into assistido (`id`, `nome`, `dataVisita`, `rg`, `cpf`) values (" + vo.getId() + ", '" + vo.getNome() + "', '" + MissaoCenaUtil.getDataHojeString() +"', '" + vo.getRg() + "', '" + vo.getCpf() + "')");
 			System.out.println("Assistido " + vo.getNome() + " cadastrado");
 			stmt.close();
@@ -66,22 +67,22 @@ public class AssistidoDAO {
 	}
 	
 	public static int getCountAssistidos() {
-		int count = 0;
+		int lastId = 0;
 		try {
 			conexao.conecta();
 			Statement stmt = conexao.con.createStatement();
-	        ResultSet rs = stmt.executeQuery("Select * from assistido");
-	        while (rs.next()) {
-	        	count++;
-	        }
-			stmt.close();
+	        ResultSet rs = stmt.executeQuery("Select max(id) as idmax from assistido");
+	        rs.next();
+	        lastId = rs.getInt("idmax");
+            // fechando as conexoes
+        	rs.close();
+        	stmt.close();
 			conexao.con.close();
 			System.out.println("Conexao Fechada");
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro no sistema:\n" + e, "ATENCAO",	JOptionPane.WARNING_MESSAGE);
 		}
-		count++;
-		return count;
+		return lastId;
 	}
 
 }

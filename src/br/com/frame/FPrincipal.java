@@ -50,7 +50,7 @@ public class FPrincipal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        setTitle("Missao Cena - Pagina Inicial");
         lblHoje1.setFont(new java.awt.Font("MS Sans Serif", 1, 24)); // NOI18N
         lblHoje1.setText("Missao Cena");
 
