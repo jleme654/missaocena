@@ -50,7 +50,7 @@ public class FCadFornecedor extends javax.swing.JFrame {
         popupMenu1.setLabel("popupMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Missao Cena - Cadastro de Assistido");
+        setTitle("Cadastro de Assistido");
         setResizable(false);
         getContentPane().setLayout(null);
 

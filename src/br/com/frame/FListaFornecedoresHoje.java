@@ -39,7 +39,7 @@ public class FListaFornecedoresHoje extends javax.swing.JFrame {
         tabela = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Missao Cena - Assistidos Hoje - "+ MissaoCenaUtil.getDataHojeString());
+        setTitle("Assistidos Hoje - "+ MissaoCenaUtil.getDataHojeString());
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
